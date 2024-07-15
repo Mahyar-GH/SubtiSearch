@@ -14,9 +14,10 @@
         background-color: var(--black);
         color: var(--white);
         font-family: sans-serif;
-        font-size: 18px;
-        --white: #e0e0e0;
-        --black: #1f1f1f;
+        font-size: 22px;
+        --white: hsl(0, 0%, 88%);
+        --gray: hsl(0, 0%, 35%);
+        --black: hsl(0, 0%, 12%);
         --red: #ff766C;
       }
 
@@ -31,18 +32,28 @@
         font-weight: bold;
         color: var(--red);
       }
+
+      hr, .src {
+        color: var(--gray);
+        font-size: 15px;
+      }
+
+      .search-results {
+        width: 75%;
+        max-width: 800px;
+        margin-inline: auto;
+      }
     </style>
   </head>
   <body>
     <input
       type="text"
       name="q"
-      hx-get="search/"
-      hx-trigger="keyup changed delay: 500ms"
+      hx-get="/search/{{ limit }}/"
+      hx-trigger="keyup changed delay:250ms"
       hx-target="#searchResuts"
-      _="on change if my.value !=='' trigger doRequest"
     />
     <hr />
-    <div class="search-resuts" id="searchResuts"></div>
+    <div class="search-results" id="searchResuts"></div>
   </body>
 </html>
